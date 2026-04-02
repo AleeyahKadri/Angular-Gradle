@@ -56,13 +56,10 @@ gradlePlugin {
             implementationClass = "de.clashsoft.gradle.angular.AngularGradlePlugin"
         }
     }
+    testSourceSets(sourceSets.create("functionalTest"))
 }
 
-val functionalTestSourceSet = sourceSets.create("functionalTest")
-
-gradlePlugin {
-    testSourceSets(functionalTestSourceSet)
-}
+val functionalTestSourceSet = sourceSets["functionalTest"]
 
 configurations[functionalTestSourceSet.implementationConfigurationName]
     .extendsFrom(configurations["testImplementation"])
